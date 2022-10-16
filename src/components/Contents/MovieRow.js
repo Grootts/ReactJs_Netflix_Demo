@@ -188,14 +188,11 @@ poisition:relative;
     z-index:10;
 }
 img{
-    height:210px;
+    height:100%;
     width:100%;
-
-//tran vien
-object-fit:cover;
-&.isNetflix{
-    width:100%;
-height:100%;
+    
+         
+object-fit:cover;   
 }
 }
 .movieName{
@@ -209,6 +206,7 @@ height:100%;
    
     background-color:rgba(0,0,0,0.66);
 }
+
 }
 
 `;
