@@ -6,12 +6,12 @@ import MenuItem from './MenuItem';
 function Menu(props){
 return(
     <MenuPane>
-        <MenuItem name="Home" Icon={AiFillHome}/>
-        <MenuItem name="Trending" Icon={FaHotjar}/>
-        <MenuItem name="Top Rated" Icon={AiFillStar}/>
-        <MenuItem name="Action Movie" Icon={GiNinjaHeroicStance}/>
-        <MenuItem name="Comedy Movie" Icon={GiStarStruck}/>
-        <MenuItem name="Romance Movie" Icon={GiStarSwirl}/>
+        <MenuItem name="Home" Icon={AiFillHome} to='netflix'/>
+        <MenuItem name="Trending" Icon={FaHotjar}to='trending'/>
+        <MenuItem name="Top Rated" Icon={AiFillStar}to='rated'/>
+        <MenuItem name="Action Movie" Icon={GiNinjaHeroicStance}to='action'/>
+        <MenuItem name="Comedy Movie" Icon={GiStarStruck}to='comedy'/>
+        <MenuItem name="Romance Movie" Icon={GiStarSwirl}to='romance'/>
        
     </MenuPane>
 );

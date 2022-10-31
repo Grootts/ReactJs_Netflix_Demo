@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { SmoothHorizontalScrolling } from "../../utils";
 import { useViewPort } from "../hooks";
 function MovieRow(props){
-    const{movies,title,isNetflix}=props;
+    const{movies,title,isNetflix,idSection}=props;
     const sliderRef=useRef();
     const movieRef=useRef();
     const[windowWidth]=useViewPort();
@@ -23,7 +23,7 @@ function MovieRow(props){
     }
     return(
         //draggble de keo ca cum
-        <MovieRowContainer draggable='false'>
+        <MovieRowContainer draggable='false' id={idSection}>
             <h1 className="heading">{title}</h1>
             <MovieSlider ref={sliderRef} draggable='true'
             style={

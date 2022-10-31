@@ -25,7 +25,7 @@ export const getTrenddingMovie= ()=>async dispatch=>{
 export const getTopRatedMovie= ()=>async dispatch=>{
     try {
         const result=await axios.get(
-            `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US`
+            `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
         );
         dispatch({type: Types.GET_TOPRATED_MOVIES,payload:result.data.results})
     } catch (error) {
@@ -35,7 +35,7 @@ export const getTopRatedMovie= ()=>async dispatch=>{
 export const getActionMovie= ()=>async dispatch=>{
     try {
         const result=await axios.get(
-            `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_networks=28`
+            `${BASE_URL}/discover/movie?api_key=${API_KEY}&&language=en-US&page=5`
         );
         dispatch({type: Types.GET_ACTION_MOVIES,payload:result.data.results})
     } catch (error) {
@@ -55,7 +55,7 @@ export const getComedyMovie= ()=>async dispatch=>{
 export const getRomanceMovie= ()=>async dispatch=>{
     try {
         const result=await axios.get(
-            `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_networks=26`
+            `${BASE_URL}/movie/upcoming?api_key=c196179590cd620f6aa69b9eb2071862&language=en-US&page=1`
         );
         dispatch({type: Types.GET_ROMANCE_MOVIES,payload:result.data.results})
     } catch (error) {
