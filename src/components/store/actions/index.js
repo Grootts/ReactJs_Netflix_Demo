@@ -62,3 +62,6 @@ export const getRomanceMovie= ()=>async dispatch=>{
         console.log('Get Romance API error',error)
     }
 }
+export const setMovieDetail=(movie)=>dispatch=>{
+dispatch({type:Types.SET_MOVIE_DETAIL,payload: movie})
+}
