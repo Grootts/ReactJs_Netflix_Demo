@@ -1,23 +1,22 @@
-import{AiFillHome,AiFillStar} from 'react-icons/ai'
-import{FaHotjar} from 'react-icons/fa'
-import{GiNinjaHeroicStance,GiStarStruck,GiStarSwirl} from 'react-icons/gi'
-import styled from 'styled-components';
-import MenuItem from './MenuItem';
-function Menu(props){
-return(
+import { AiFillHome, AiFillStar } from "react-icons/ai";
+import { FaHotjar } from "react-icons/fa";
+import { GiNinjaHeroicStance, GiStarStruck, GiStarSwirl } from "react-icons/gi";
+import styled from "styled-components";
+import MenuItem from "./MenuItem";
+function Menu(props) {
+  return (
     <MenuPane>
-        <MenuItem name="Home" Icon={AiFillHome} to='netflix'/>
-        <MenuItem name="Trending" Icon={FaHotjar}to='trending'/>
-        <MenuItem name="Top Rated" Icon={AiFillStar}to='rated'/>
-        <MenuItem name="Action Movie" Icon={GiNinjaHeroicStance}to='action'/>
-        <MenuItem name="Comedy Movie" Icon={GiStarStruck}to='comedy'/>
-        <MenuItem name="Romance Movie" Icon={GiStarSwirl}to='romance'/>
-       
+      <MenuItem name="Home" Icon={AiFillHome} to="netflix" />
+      <MenuItem name="Trending" Icon={FaHotjar} to="trending" />
+      <MenuItem name="Top Rated" Icon={AiFillStar} to="rated" />
+      <MenuItem name="Action Movie" Icon={GiNinjaHeroicStance} to="action" />
+      <MenuItem name="Comedy Movie" Icon={GiStarStruck} to="comedy" />
+      <MenuItem name="Romance Movie" Icon={GiStarSwirl} to="romance" />
     </MenuPane>
-);
+  );
 }
 export default Menu;
-const MenuPane=styled.div`
+const MenuPane = styled.div`
 //giu nguyen vi tri khi cuon
 position:fixed;
 left:0;
@@ -61,4 +60,4 @@ span{
 
 }
 }
-`
+`;

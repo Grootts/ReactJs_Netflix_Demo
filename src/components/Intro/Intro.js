@@ -1,41 +1,47 @@
 import ReactPlayer from "react-player";
-import {ImVolumeMute2,ImVolumeMute} from 'react-icons/im'
+import { ImVolumeMute2, ImVolumeMute } from "react-icons/im";
 import styled from "styled-components";
 import { useState } from "react";
 
-function Intro(props){
-    const[volumeMuted,setVolumeMuted]=useState(false);
-    return(
-        <IntroContainer>
-<ReactPlayer
-playing={true}
-loop={true}
-width= "100%"
-height="100%"
-volume={1}
-muted={volumeMuted}
-url="https://vimeo.com/83409369"
-className="videoIntro"
-/>
+function Intro(props) {
+  const [volumeMuted, setVolumeMuted] = useState(false);
+  return (
+    <IntroContainer>
+      <ReactPlayer
+        playing={true}
+        loop={true}
+        width="100%"
+        height="100%"
+        volume={1}
+        muted={volumeMuted}
+        url="https://vimeo.com/623479718"
+        className="videoIntro"
+      />
 
-<div className="introIntro">
-    <h1 className="headingIntro">Netflix Elite</h1>
-    <p className="overViewIntro">Watch it in 1080p/720p!
-This is an 4 hour IC collab with my friend Eva (Qubii) . We hope you enjoy it </p>
-</div>
-{
-    volumeMuted?(<ImVolumeMute2 className="btnVolume" onClick={()=>setVolumeMuted(prev=>!prev)}/>)
-    :(
-        <ImVolumeMute className="btnVolume" onClick={()=>setVolumeMuted(prev=>!prev)}/>   
-    )
-}
-
-        </IntroContainer>
-    )
+      <div className="introIntro">
+        <h1 className="headingIntro">Netflix Elite</h1>
+        <p className="overViewIntro">
+          Watch it in 1080p/720p! This is an 4 hour IC collab with my friend Eva
+          (Qubii) . We hope you enjoy it{" "}
+        </p>
+      </div>
+      {volumeMuted ? (
+        <ImVolumeMute2
+          className="btnVolume"
+          onClick={() => setVolumeMuted((prev) => !prev)}
+        />
+      ) : (
+        <ImVolumeMute
+          className="btnVolume"
+          onClick={() => setVolumeMuted((prev) => !prev)}
+        />
+      )}
+    </IntroContainer>
+  );
 }
 export default Intro;
 
-const IntroContainer=styled.div`
+const IntroContainer = styled.div`
 position:relative;
 color: var(--color-white);
 padding-top 56%;
@@ -44,6 +50,7 @@ background-color:var(--color-background);
 position:absolute;
 top:0;
 left:0;
+user-select:none;
 }
 .introIntro{
     position:absolute;
