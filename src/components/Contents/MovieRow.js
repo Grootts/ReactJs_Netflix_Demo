@@ -3,11 +3,14 @@ import{AiOutlineCaretLeft,AiOutlineCaretRight} from "react-icons/ai"
 import { useRef } from "react";
 import { SmoothHorizontalScrolling } from "../../utils";
 import { useViewPort } from "../hooks";
+import { useDispatch } from "react-redux";
+import{setMovieDetail} from "../store/actions/index"
 function MovieRow(props){
     const{movies,title,isNetflix,idSection}=props;
     const sliderRef=useRef();
     const movieRef=useRef();
     const[windowWidth]=useViewPort();
+    const dispatch=useDispatch();
     const handleScrollRight=()=>{
         const maxScrollLeft=sliderRef.current.scrollWidth-sliderRef.current.clientWidth;
         console.log(maxScrollLeft);
@@ -20,6 +23,9 @@ function MovieRow(props){
         if(sliderRef.current.scrollLeft>0){
             SmoothHorizontalScrolling(sliderRef.current,250,-movieRef.current.clientWidth*2,sliderRef.current.scrollLeft)
         };
+    }
+    const handleSetMovie=(movie)=>{
+dispatch(setMovieDetail(movie));
     }
     return(
         //draggble de keo ca cum
@@ -44,7 +50,9 @@ function MovieRow(props){
                         ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
                         : `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
                         return(
-                            <div key={index} className="movieItem" ref={movieRef} draggable='false'>
+                            <div key={index} className="movieItem" ref={movieRef} draggable='false'
+                            onClick={()=>handleSetMovie(movie)}
+                            >
                             <img  src={imageUrl} alt="" draggable='false'/>
                             <div className="movieName">{movie.title||movie.name}</div>
                         </div>

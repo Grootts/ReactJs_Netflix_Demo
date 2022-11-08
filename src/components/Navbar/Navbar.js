@@ -2,8 +2,11 @@ import NetflixLogo from '../../assets/image/netflix(2).png'
 import{FiSearch} from 'react-icons/fi'
 import styled from 'styled-components'
 import { useScrollY } from '../hooks/useScrollY';
+import { useState } from 'react';
 function Navbar(props){
     const [scrollY]=useScrollY();
+    const [keywords,setKeyWords]=useState('');
+    
     return(
         <Navigation style={scrollY<50?{backgroundColor:'transparent'}:{backgroundColor:'black'}}>
             <div className='navContainer'>

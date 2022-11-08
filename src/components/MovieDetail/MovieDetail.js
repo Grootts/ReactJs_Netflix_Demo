@@ -1,25 +1,39 @@
+import moment from 'moment/moment';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled, { keyframes } from 'styled-components';
-const showModal=false;
+import { setMovieDetail } from '../store/actions';
+//const showModal=false;
+
 function MovieDetail(props) {
+    const{movie,showModal}=props;
+    const dispatch=useDispatch();
+    const handleCloseDetail=()=>{
+        dispatch(setMovieDetail(null))
+    }
     return (
         <MovieDetailModal>
-            <div className={`backdrop ${showModal?'showBackdrop':'hideBackdrop'}`}></div>
-            <div className={`modal ${showModal?'showBackdrop':'hideBackdrop'}`}
-            style={{backgroundImage:`url(https://tse3.mm.bing.net/th?id=OIP.jy7GfGXAtYm9C6D-ujxcuAHaDS&pid=Api&P=0)`,
+            <div className={`backdrop ${showModal?'showBackdrop':'hideBackdrop'}`}
+            onClick={()=>handleCloseDetail()}
+            ></div>
+            <div className={`modal ${showModal?'showModal':'hideModal'}`}
+            style={movie?{backgroundImage:`url(https://image.tmdb.org/t/p/original/${movie.backdrop_path||movie.poster_path})`,
             backgroundSize:'cover'
-        }}
+        }:{}
+    }
             >
                 <div className='container'>
                     <div className='movieInfo'>
-                        <h1 className='movieTitle'>sdsd</h1>
+                        <h1 className='movieTitle'>{movie&&(movie.title||movie.name)}</h1>
                         <p className='statistical'>
-                            <span className='rating'>dsdsd</span>
-                            <span className='popularity'>dsdsds</span>
+                            <span className='rating'>Rating: {movie&&movie.vote_average*10}%</span>
+                            <span className='popularity'>{movie&&movie.popularity}</span>
                         </p>
-                        <p className='releaseDate'>sdsdsdsd</p>
-                        <p className='runtime'>sdsd</p>
-                        <p className='overview'>dsdsdsd</p>
+                        <p className='releaseDate'>Release Date: {movie&&
+                        (moment(movie.release_date).format('DD/MM/YYYY')||moment(movie.first_air_date).format('DD/MM/YYYY'))
+                        }</p>
+                        <p className='runtime'>Run time:{movie&&(movie.runtime)}</p>
+                        <p className='overview'>Overview: {movie&&(movie.overview)}</p>
                     </div>
                 </div>
             </div>
@@ -38,8 +52,8 @@ const MovieDetailModal=styled.div`
     width:100%;
     height:100%;
     z-index:200;
-    background-color:rgba(0,0,0,0.6);
-animation:${fadeIn} 1s cubic-bezier(0.17,0.85,0.45,1) forwards;
+    background-color: rgba(0,0,0,0.6);
+animation: ${fadeIn} 1s cubic-bezier(0.17,0.85,0.45,1) forwards;
 
 }
 .showBackdrop{
@@ -53,12 +67,18 @@ animation:${fadeIn} 1s cubic-bezier(0.17,0.85,0.45,1) forwards;
     top:25%;
     left:0;
     z-index:300;
-    height:80%;
+    height:70%;
     width:100%;
     margin:0 auto;
     color:white;
     box-shadow:0 15px 40px rgba(255,255,255,0.2);
-
+    transition: 0.3s ease;
+    @media screen and (max-width:1184px){
+        height:70%;
+    }
+    @media screen and (max-width:600px){
+        height:80%;
+    }
 }
 .container{
     position:fixed;
@@ -92,6 +112,20 @@ animation:${fadeIn} 1s cubic-bezier(0.17,0.85,0.45,1) forwards;
         margin-top:20px;
         display:flex;
     }
+}
+.showModal{
+   top:25%;
+   opacity:1;
+   left:0;
+   visibility:visible;
+   transition: 0.3s ease-in-out
+}
+.hideModal{
+    top:0;
+   opacity:0;
+   
+   visibility:hidden;
+   transition: 0.3s ease-in-out
 }
 `
 export default MovieDetail;

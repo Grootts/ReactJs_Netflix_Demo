@@ -6,7 +6,8 @@ TopRatedMovie:null,
 ActionMovie:null,
 ComedyMovie:null,
 RomanceMovie:null,
-MovieDetail:null
+MoviesDetail:null,
+SearchMovie:null
 }
 
 const reducerMovie= (state = reducerMovieInitialState, action) => {
@@ -25,7 +26,10 @@ switch (type) {
   case Types.GET_ROMANCE_MOVIES:
   return{...state,RomanceMovie:payload}
   case Types.SET_MOVIE_DETAIL:
-  return{...state,MovieDetail:payload}
+  return{...state,MoviesDetail:payload}
+  case Types.GET_SEARCH_MOVIES:
+  return{...state,SearchMovie:payload}
+
   default:
     return state
   }
